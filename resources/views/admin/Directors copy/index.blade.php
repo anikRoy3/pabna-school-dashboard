@@ -33,7 +33,7 @@
 @section('content')
     {{-- @dd($data) --}}
     <div class="card slider-list">
-        <div class="table-responsive card-body p-0">
+        <div class="table-responsive card-body p-0"> <!-- Wrap table in a responsive container -->
             <table class="table">
                 <thead>
                     <tr>
@@ -86,11 +86,11 @@
                             </td> --}}
 
                             <td class="text-center d-flex justify-content-center align-items-center">
-                                <a href="{{ route('directors.edit', $item) }}" class="btn btn-primary btn-sm"><i
+                                <a href="{{ route('notices.edit', $item) }}" class="btn btn-primary btn-sm"><i
                                         class="fas fa-edit"></i>
                                 </a>
-                                <button data-id="{{$item->id}}" class="btn btn-danger btn-sm btn-delete ml-1"
-                                    data-url="{{ route('directors.destroy', $item) }}">
+                                <button class="btn btn-danger btn-sm btn-delete ml-1"
+                                    data-url="{{ route('notices.destroy', $item) }}">
                                     <i class="fas fa-trash"></i>
                                 </button>
                             </td>
@@ -135,16 +135,13 @@
                         reverseButtons: true
                     }).then((result) => {
                         if (result.value) {
-                            const id = $this.data('id');
                             $.post($this.data('url'), {
                                 _method: 'DELETE',
-                                _token: '{{ csrf_token() }}',
-                                _body: id
+                                _token: '{{ csrf_token() }}'
                             }, function(res) {
-                                console.log(res);
-                                $this.closest('tr').fadeOut(500, function(){
+                                $this.closest('tr').fadeOut(500, function() {
                                     $(this).remove();
-                                });
+                                })
                             })
                         }
                     });

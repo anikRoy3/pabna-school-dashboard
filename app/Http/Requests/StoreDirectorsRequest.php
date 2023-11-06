@@ -31,6 +31,7 @@ class StoreDirectorsRequest extends FormRequest
             'speech' => 'nullable|string',
             'subject' => 'nullable|string',
             'd_c_id' => 'required|integer',
+            
         ];
     }
     public function messages()

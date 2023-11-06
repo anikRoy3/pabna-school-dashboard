@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
-@section('title', 'স্লাইডার সম্পাদনা করুন')
-@section('content-header', 'স্লাইডার সম্পাদনা করুন')
+@section('title', 'আপডেট করুন')
+@section('content-header', 'আপডেট করুন')
 
 @section('content')
 

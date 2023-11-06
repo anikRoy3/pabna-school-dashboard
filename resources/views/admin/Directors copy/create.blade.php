@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
-@section('title', 'পরিষদ তৈরি করুন')
-@section('content-header', 'পরিষদ তৈরি করুন')
+@section('title', 'নোটিশ তৈরি করুন')
+@section('content-header', 'নোটিশ তৈরি করুন')
 
 @section('content')
     <div class="card">
@@ -131,7 +131,7 @@
                 </script>
 
 
-         {{--        <div class="form-group">
+                <div class="form-group">
                     <label for="status">স্ট্যাটাস</label>
                     <select name="status" class="form-control @error('status') is-invalid @enderror" id="status">
                         <option value="1" {{ old('status') === 1 ? 'selected' : '' }}>সক্রিয়</option>
@@ -142,9 +142,9 @@
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
-                </div> --}}
+                </div>
                 <button class="btn btn-primary" type="submit">তৈরি করুন</button>
-                <a href="{{ route('directors.index') }}" class="btn btn-danger">বাতিল করুন</a>
+                <a href="{{ route('notices.index') }}" class="btn btn-danger">বাতিল করুন</a>
             </form>
         </div>
     </div>

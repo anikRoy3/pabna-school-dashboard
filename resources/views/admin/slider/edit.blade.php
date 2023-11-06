@@ -8,7 +8,7 @@
     <div class="card">
         <div class="card-body">
 
-            <form action="{{ route('sliders.update', $data) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('sliders.update', $data) }}" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
 

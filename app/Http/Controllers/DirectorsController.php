@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreDirectorsRequest;
+use App\Http\Requests\UpdateDirectorsRequest;
 use App\Http\Resources\DirectorsResource;
 use App\Models\DirectorsCategory;
 use App\Models\Directors;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class DirectorsController extends Controller
 {
@@ -68,6 +70,7 @@ class DirectorsController extends Controller
                 "speech" => $request->input('speech'),
                 "subject" => $request->input('subject'),
                 "d_c_id" => $request->input('d_c_id'),
+
             ]);
             $director->save();
         }
@@ -91,22 +94,66 @@ class DirectorsController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $data = Directors::find($id);
+        return view('admin.directors.edit', compact('data'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
+
     {
-        //
+
+        // Find the director you want to update
+        $director = Directors::find($id);
+
+        if (!$director) {
+            return redirect()->route('directors.index')->with('error', 'দুঃখিত, পরিচালক পাওয়া যায়নি।');
+        }
+
+        // Check if a new image is being uploaded
+        if ($request->hasFile('image')) {
+            // Handle image upload here
+            $image_path = $request->file('image')->store('directors', 'public');
+
+            // Delete the old image (optional, if needed)
+            Storage::disk('public')->delete($director->image);
+        } else {
+            $image_path = $director->image;
+        }
+
+        // Update the other fields
+        $director->name = $request->input('name');
+        $director->email = $request->input('email');
+        $director->phone = $request->input('phone');
+        $director->designation = $request->input('designation');
+        $director->biodata = $request->input('biodata');
+        $director->speech = $request->input('speech');
+        $director->subject = $request->input('subject');
+        $director->image =   $image_path;
+        $director->d_c_id = $request->input('d_c_id');
+
+        // Save the updated director
+        $director->save();
+
+        return redirect()->route('directors.index')->with('success', 'সফলভাবে, পরিচালক আপডেট করা হয়েছে।');
     }
+
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request)
     {
-        //
+        $id= $request->_body;
+        $data = Directors::find($id);
+        if($data->image){
+                Storage::delete($data->image);
+        }
+        $data->delete();
+        return response()->json([
+            'success' => true
+        ]);;
     }
 }
