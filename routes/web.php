@@ -37,9 +37,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::prefix('admin')/* ->middleware('auth') */->group(function () {
-    
+
     Route::get('/', [HomeController::class, 'index'])->name('home');
-    
+
     Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');
     Route::put('/settings', [SettingController::class, 'update'])->name('settings.update');
     Route::resource('products', ProductController::class);
@@ -90,6 +90,6 @@ Route::prefix('admin')/* ->middleware('auth') */->group(function () {
     Route::resource('prokolper_outputs', ProkolperOutputController::class);
     Route::resource('directors_categories', DirectorsCategoryController::class);
     Route::resource('directors', DirectorsController::class);
-
+    Route::resource('schoolActivities', \App\Http\Controllers\SchoolActivitiesController::class);
 });
 

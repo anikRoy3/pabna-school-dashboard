@@ -15,6 +15,8 @@
             @endif
 
         </a>
+        <h6 class="mt-2">{{@App\Models\Setting::first()->school_name}}</h6>
+
     </div>
 
     <!-- ----- End of Brand Logo----- -->
@@ -77,12 +79,12 @@
                     </a>
                 </li>
 
-                <li class="nav-item has-treeview">
-                    <a href="{{ route('menu-lists.index') }}" class="nav-link {{ activeSegment('menu-lists') }}">
-                        <i class="fa-solid fa-bars text-dark"></i>
-                        <p class="ml-2">মেনু তালিকা</p>
-                    </a>
-                </li>
+{{--                <li class="nav-item has-treeview">--}}
+{{--                    <a href="{{ route('menu-lists.index') }}" class="nav-link {{ activeSegment('menu-lists') }}">--}}
+{{--                        <i class="fa-solid fa-bars text-dark"></i>--}}
+{{--                        <p class="ml-2">মেনু তালিকা</p>--}}
+{{--                    </a>--}}
+{{--                </li>--}}
 
                 <!-- Start section of Home Page Menu -->
 
@@ -97,34 +99,6 @@
                             <a href="{{ route('sliders.index') }}" class="nav-link {{ activeSegment('sliders') }} ml-4">
                                 <i class="fa-solid fa-sliders text-dark"></i>
                                 <p class=" active">স্লাইডার</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('apps-and-softwares.index') }}"
-                                class="nav-link {{ activeSegment('apps-and-softwares') }} ml-4">
-                                <i class="fa-brands fa-app-store text-dark"></i>
-                                <p class=" active">জমির তথ্য ও সফটওয়্যার</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('land-related-media-links.index') }}"
-                                class="nav-link {{ activeSegment('land-related-media-links') }} ml-4">
-                                <i class="fa-brands fa-medium text-dark"></i>
-                                <p class=" active">জমি সংক্রান্ত মিডিয়া লিঙ্ক</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('land-related-video-links.index') }}"
-                                class="nav-link {{ activeSegment('land-related-video-links') }} ml-4">
-                                <i class="fa-solid fa-video text-dark"></i>
-                                <p class=" active">জমি সংক্রান্ত ভিডিও লিঙ্ক</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('festivals-images.index') }}"
-                                class="nav-link {{ activeSegment('festivals-images') }} ml-4">
-                                <i class="fa-solid fa-file-image text-dark"></i>
-                                <p class=" active">উৎসবের ছবি</p>
                             </a>
                         </li>
                     </ul>
@@ -168,6 +142,14 @@
                     </ul>
                 </li>
 
+
+                    {{-- School activities start --}}
+                <li class="nav-item has-treeview">
+                    <a href="{{ route('schoolActivities.index') }}" class="nav-link {{ activeSegment('schoolActivities') }}">
+                        <i class="fa-solid fa-triangle-exclamation text-dark"></i>
+                        <p class="ml-2">স্কুল কার্যক্রম</p>
+                    </a>
+                </li>
                 <!------- Start section of ভূমিসেবা সমূহ ------->
 
                 <li class="nav-item has-treeview">
