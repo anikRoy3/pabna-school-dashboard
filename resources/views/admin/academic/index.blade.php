@@ -61,7 +61,7 @@
                                 <a href="{{ route('academic.edit', $item) }}" class="btn btn-primary btn-sm"><i
                                         class="fas fa-edit"></i>
                                 </a>
-                                <button data-id="{{$item->id}}" class="btn btn-danger btn-sm btn-delete ml-1"
+                                <button data-id="{{ $item->id }}" class="btn btn-danger btn-sm btn-delete ml-1"
                                     data-url="{{ route('academic.destroy', $item) }}">
                                     <i class="fas fa-trash"></i>
                                 </button>
@@ -71,7 +71,8 @@
                     @empty
                         <tr>
                             <td colspan="5" class="text-center d-flex justify-content-center align-items-center">তথ্য
-                                পাওয়া যাচ্ছে না!</td>
+                                পাওয়া যাচ্ছে না!
+                            </td>
                         </tr>
                     @endforelse
                 </tbody>

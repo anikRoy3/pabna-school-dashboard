@@ -1,9 +1,9 @@
 @extends('layouts.admin')
 
-@section('title', 'ভর্তি- সংক্রান্ত তালিকা')
-@section('content-header', 'ভর্তি- সংক্রান্ত নোটিশ তালিকা')
+@section('title', 'পরীক্ষা ও পরীক্ষার ফলাফল')
+@section('content-header', 'পরীক্ষা ও পরীক্ষার ফলাফল ')
 @section('content-actions')
-    <a href="{{ route('admission.create') }}" class="btn btn-success">তৈরি করুন</a>
+    <a href="{{ route('coCurricular.create') }}" class="btn btn-success">তৈরি করুন</a>
 @endsection
 @section('css')
     <link rel="stylesheet" href="{{ asset('plugins/sweetalert2/sweetalert2.min.css') }}">
@@ -32,37 +32,38 @@
 @endsection
 @section('content')
     <div class="card slider-list">
-        <div class="table-responsive card-body p-0"> <!-- Wrap table in a responsive container -->
+        <div class="table-responsive card-body p-0"> 
             <table class="table">
                 <thead>
-                    <tr class="">
-                        <th>সিরিয়াল</th>
-                        <th>নোটিশ</th>
-                        <th>PDF ফাইল</th>
-                        <th>স্ট্যাটাস</th>
-                        <th>প্রক্রিয়া</th>
+                    <tr style="color: black">
+                        <th>আইডি</th>
+                        <th>পরীক্ষার নাম</th>
+                        <th>সাল</th>
+                        <th>পরীক্ষার্থীদের সংখ্যা</th>
+                        <th>পরীক্ষার্থীদের উপস্থিতি</th>
+                        <th>এ+</th>
+                        <th>মোট পাস</th>
+                        <th>পাসের %</th>
                     </tr>
                 </thead>
                 <tbody>
                     @forelse ($data as $index => $item)
                         <tr>
                             <td>{{ $item->id }}</td>
-                            <td>{{ $item->title }}</td>
-                            <td>
-                                <a href="{{ Storage::url($item->pdf) }}" target="_blank">পিডিএফ দেখুন</a>
-                            </td>
-                            <td>
-                                <span
-                                    class="p-2 mt-1 right badge badge-{{ $item->status ? 'success' : 'danger' }}">{{ $item->status ? 'সক্রিয়' : 'নিষ্ক্রিয়' }}
-                                </span>
-                            </td>
+                            <td>{{ strtoupper($item->exam_name) }}</td>
+                            <td>{{ $item->exam_year }}</td>
+                            <td>{{ $item->total_candidates }}</td>
+                            <td>{{ $item->attended_candidates }}</td>
+                            <td>{{ $item->a_plus_holder }}</td>
+                            <td>{{ $item->total_pass }}</td>
+                            <td>{{ $item->pass_rate }}</td>
 
                             <td class="text-center d-flex justify-content-center align-items-center">
-                                <a href="{{ route('admission.edit', $item) }}" class="btn btn-primary btn-sm"><i
+                                <a href="{{ route('coCurricular.edit', $item) }}" class="btn btn-primary btn-sm"><i
                                         class="fas fa-edit"></i>
                                 </a>
                                 <button data-id="{{ $item->id }}" class="btn btn-danger btn-sm btn-delete ml-1"
-                                    data-url="{{ route('admission.destroy', $item) }}">
+                                    data-url="{{ route('coCurricular.destroy', $item) }}">
                                     <i class="fas fa-trash"></i>
                                 </button>
                             </td>

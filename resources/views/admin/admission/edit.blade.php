@@ -1,14 +1,14 @@
 @extends('layouts.admin')
 
-@section('title', 'শিক্ষা সম্পাদনা করুন')
-@section('content-header', 'শিক্ষা সম্পাদনা করুন')
+@section('title', 'ভর্তি- সংক্রান্ত আপডেট করুন')
+@section('content-header', 'ভর্তি- সংক্রান্ত আপডেট করুন')
 
 @section('content')
 
 <div class="card">
     <div class="card-body">
 
-        <form action="{{ route('academic.update', $data) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('admission.update', $data) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
 
@@ -33,7 +33,7 @@
             </div>
             <div class="form-group">
                 <label for="notice_pdf">PDF <span class="text-danger">*</span></label>
-                <input type="file" name="pdf" accept="application/pdf" class="form-control-file @error('notice_pdf') is-invalid @enderror" id="notice_pdf">
+                <input type="file" name="pdf_file" accept="application/pdf" class="form-control-file @error('notice_pdf') is-invalid @enderror" id="notice_pdf">
                 @error('notice_pdf')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>

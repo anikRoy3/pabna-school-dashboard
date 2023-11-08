@@ -166,9 +166,9 @@
                 {{-- Education section start --}}
 
                 <li class="nav-item has-treeview">
-                    <a href="{{ route('education.index') }}" class="nav-link {{ activeSegment('education') }}">
+                    <a href="{{ route('coCurricular.index') }}" class="nav-link {{ activeSegment('coCurricular') }}">
                         <i class="fa-solid fa-triangle-exclamation text-dark"></i>
-                        <p class="ml-2">শিক্ষা</p>
+                        <p class="ml-2">সহ - পাঠক্রম</p>
                     </a>
                 </li>
                 <!------- End section of Education section ------->
@@ -188,7 +188,7 @@
 
                 <!-- Start section of প্রকল্প সম্পর্কিত -->
 
-                <li class="nav-item has-treeview">
+          {{--       <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
                         <i class="fa-solid fa-dharmachakra text-dark"></i>
                         <p class="ml-2">প্রকল্প সম্পর্কিত</p>
@@ -224,14 +224,14 @@
                             </a>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
                 <!-- End section of প্রকল্প সম্পর্কিত -->
 
 
 
                 <!------- Start section of ডিজিটাল গার্ড ফাইল ------->
 
-                <li class="nav-item has-treeview" id="digital-guard-file">
+               {{--  <li class="nav-item has-treeview" id="digital-guard-file">
                     <a href="#" class="nav-link">
                         <i class="fa-regular fa-file-archive text-dark"></i>
                         <p class="ml-2">ডিজিটাল গার্ড ফাইল <i class="right fas fa-angle-left"></i></p>
@@ -266,12 +266,12 @@
                             </a>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
                 <!------- End section of ডিজিটাল গার্ড ফাইল -------->
 
 
 
-                <li class="nav-item has-treeview" id="digital-guard-file">
+         {{--        <li class="nav-item has-treeview" id="digital-guard-file">
                     <a href="{{ route('vhumi_sheba_forms.index') }}"
                         class="nav-link {{ activeSegment('vhumi_sheba_forms') }}">
                         <i class="fa-solid fa-sheet-plastic text-dark"></i>
@@ -294,7 +294,7 @@
                         <p class="ml-2">সাম্প্রতিক আপডেট</p>
                     </a>
                 </li>
-
+--}}
                 <li class="nav-item has-treeview">
                     <a href="{{ route('settings.index') }}" class="nav-link {{ activeSegment('settings') }}">
                         <i class="nav-icon fas fa-cogs text-dark"></i>
@@ -310,7 +310,7 @@
                             @csrf
                         </form>
                     </a>
-                </li>
+                </li> 
             </ul>
         </nav>
         <!--End of sidebar-menu -->

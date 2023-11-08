@@ -11,8 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('admissions', function (Blueprint $table) {
+        Schema::create('admission', function (Blueprint $table) {
             $table->id();
+            $table->integer('show_sl')->comment('optional');
+            $table->string('title')->comment('required');
+            $table->string('pdf')->comment('required'); // Change here
+            $table->boolean('status')->comment('required');
             $table->timestamps();
         });
     }
@@ -22,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('admissions');
+        Schema::dropIfExists('admission');
     }
 };

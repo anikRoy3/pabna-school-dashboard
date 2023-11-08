@@ -1,7 +1,10 @@
 <?php
 
 use App\Http\Controllers\AcademicController;
+use App\Http\Controllers\AdmissionController;
+use App\Http\Controllers\CoCurricularController;
 use App\Http\Controllers\SchoolActivitiesController;
+use App\Http\Controllers\SettingController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FaqController;
@@ -71,3 +74,6 @@ Route::resource('user_ask_questions', UserAskQuestionController::class);
 Route::resource('directors', DirectorsController::class);
 Route::resource('schoolActivities', SchoolActivitiesController::class);
 Route::resource('academic', AcademicController::class);
+Route::resource('coCurricular', CoCurricularController::class);
+Route::resource('admission', AdmissionController::class);
+Route::resource('settings', SettingController::class);

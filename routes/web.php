@@ -4,6 +4,7 @@ use App\Http\Controllers\AcademicController;
 use App\Http\Controllers\AdmissionController;
 use App\Http\Controllers\CartController;
 // use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\CoCurricularController;
 use App\Http\Controllers\DirectorsCategoryController;
 use App\Http\Controllers\EducationController;
 use App\Http\Controllers\HomeController;
@@ -96,7 +97,7 @@ Route::prefix('admin')/* ->middleware('auth') */->group(function () {
     Route::resource('directors', DirectorsController::class);
     Route::resource('schoolActivities', SchoolActivitiesController::class);
     Route::resource('academic', AcademicController::class);
-    Route::resource('education', EducationController::class);
+    Route::resource('coCurricular', CoCurricularController::class);
     Route::resource('admission', AdmissionController::class);
 });
 

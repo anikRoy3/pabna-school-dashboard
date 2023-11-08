@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\SettingResource;
 use App\Models\Setting;
+use Database\Seeders\SettingsSeeder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB; // Import the DB facade for transactions
 
@@ -11,8 +12,9 @@ class SettingController extends Controller
 {
     public function index()
     {
-        $setting = Setting::first();
+        $setting = new Setting;
         if (request()->wantsJson()) {
+            $setting= $setting->get();  
             if ($setting) {
                 return response([
                     'status' => true,

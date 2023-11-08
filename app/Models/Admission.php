@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Admission extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'show_sl',
+        'title',
+        'pdf',
+        'status',
+    ];
+    protected $table = 'admission';
 }
