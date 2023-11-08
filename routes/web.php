@@ -1,11 +1,15 @@
 <?php
 
+use App\Http\Controllers\AcademicController;
+use App\Http\Controllers\AdmissionController;
 use App\Http\Controllers\CartController;
 // use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DirectorsCategoryController;
+use App\Http\Controllers\EducationController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SchoolActivitiesController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\NoticeController;
@@ -90,6 +94,9 @@ Route::prefix('admin')/* ->middleware('auth') */->group(function () {
     Route::resource('prokolper_outputs', ProkolperOutputController::class);
     Route::resource('directors_categories', DirectorsCategoryController::class);
     Route::resource('directors', DirectorsController::class);
-    Route::resource('schoolActivities', \App\Http\Controllers\SchoolActivitiesController::class);
+    Route::resource('schoolActivities', SchoolActivitiesController::class);
+    Route::resource('academic', AcademicController::class);
+    Route::resource('education', EducationController::class);
+    Route::resource('admission', AdmissionController::class);
 });
 

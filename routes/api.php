@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AcademicController;
 use App\Http\Controllers\SchoolActivitiesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -69,3 +70,4 @@ Route::resource('prokolper_outputs', ProkolperOutputController::class);
 Route::resource('user_ask_questions', UserAskQuestionController::class);
 Route::resource('directors', DirectorsController::class);
 Route::resource('schoolActivities', SchoolActivitiesController::class);
+Route::resource('academic', AcademicController::class);

@@ -15,7 +15,7 @@
             @endif
 
         </a>
-        <h6 class="mt-2">{{@App\Models\Setting::first()->school_name}}</h6>
+        <h6 class="mt-2">{{ @App\Models\Setting::first()->school_name }}</h6>
 
     </div>
 
@@ -79,12 +79,12 @@
                     </a>
                 </li>
 
-{{--                <li class="nav-item has-treeview">--}}
-{{--                    <a href="{{ route('menu-lists.index') }}" class="nav-link {{ activeSegment('menu-lists') }}">--}}
-{{--                        <i class="fa-solid fa-bars text-dark"></i>--}}
-{{--                        <p class="ml-2">মেনু তালিকা</p>--}}
-{{--                    </a>--}}
-{{--                </li>--}}
+                {{--                <li class="nav-item has-treeview"> --}}
+                {{--                    <a href="{{ route('menu-lists.index') }}" class="nav-link {{ activeSegment('menu-lists') }}"> --}}
+                {{--                        <i class="fa-solid fa-bars text-dark"></i> --}}
+                {{--                        <p class="ml-2">মেনু তালিকা</p> --}}
+                {{--                    </a> --}}
+                {{--                </li> --}}
 
                 <!-- Start section of Home Page Menu -->
 
@@ -143,36 +143,47 @@
                 </li>
 
 
-                    {{-- School activities start --}}
+                {{-- School activities start --}}
                 <li class="nav-item has-treeview">
-                    <a href="{{ route('schoolActivities.index') }}" class="nav-link {{ activeSegment('schoolActivities') }}">
+                    <a href="{{ route('schoolActivities.index') }}"
+                        class="nav-link {{ activeSegment('schoolActivities') }}">
                         <i class="fa-solid fa-triangle-exclamation text-dark"></i>
                         <p class="ml-2">স্কুল কার্যক্রম</p>
                     </a>
                 </li>
-                <!------- Start section of ভূমিসেবা সমূহ ------->
+
+
+                {{-- Academic section start --}}
+                <li class="nav-item has-treeview">
+                    <a href="{{ route('academic.index') }}" class="nav-link {{ activeSegment('academic') }}">
+                        <i class="fa-solid fa-triangle-exclamation text-dark"></i>
+                        <p class="ml-2">একাডেমিক</p>
+                    </a>
+                </li>
+                <!------- End section of Academic সমূহ ------->
+
+
+                {{-- Education section start --}}
 
                 <li class="nav-item has-treeview">
-                    <a href="#" class="nav-link">
-                        <i class="fas fa-layer-group text-dark"></i>
-                        <p class="ml-2">ভূমিসেবা সমূহ</p>
-                        <i class="fas fa-angle-left right"></i>
+                    <a href="{{ route('education.index') }}" class="nav-link {{ activeSegment('education') }}">
+                        <i class="fa-solid fa-triangle-exclamation text-dark"></i>
+                        <p class="ml-2">শিক্ষা</p>
                     </a>
-                    <ul class="nav nav-treeview">
-
-                        <!-- Start section of সেবা -->
-
-                        <li class="nav-item has-treeview">
-                            <a href="{{ route('services.index') }}"
-                                class="nav-link {{ activeSegment('services') }} ml-4">
-                                <i class="fa-solid fa-toolbox text-dark"></i>
-                                <p class="">সেবা</p>
-                            </a>
-                        </li>
-                        <!-- End section of সেবা -->
-                    </ul>
                 </li>
-                <!------- End section of ভূমিসেবা সমূহ ------->
+                <!------- End section of Education section ------->
+
+
+
+                {{-- Admission section start --}}
+
+                <li class="nav-item has-treeview">
+                    <a href="{{ route('admission.index') }}" class="nav-link {{ activeSegment('admission') }}">
+                        <i class="fa-solid fa-triangle-exclamation text-dark"></i>
+                        <p class="ml-2">ভর্তি সংক্রান্ত</p>
+                    </a>
+                </li>
+                <!------- End section of Admission section ------->
 
 
                 <!-- Start section of প্রকল্প সম্পর্কিত -->
