@@ -32,6 +32,7 @@ use App\Http\Controllers\UddesshoLokkhoController;
 use App\Http\Controllers\NagorikerSubidhaController;
 use App\Http\Controllers\ProkolperOutputController;
 use App\Http\Controllers\DirectorsController;
+use App\Http\Controllers\OurAchievementController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -99,5 +100,6 @@ Route::prefix('admin')/* ->middleware('auth') */->group(function () {
     Route::resource('academic', AcademicController::class);
     Route::resource('coCurricular', CoCurricularController::class);
     Route::resource('admission', AdmissionController::class);
-});
+    Route::resource('ourAchievement', OurAchievementController::class);
+}); 
 

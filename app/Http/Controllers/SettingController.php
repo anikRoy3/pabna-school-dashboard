@@ -14,7 +14,7 @@ class SettingController extends Controller
     {
         $setting = new Setting;
         if (request()->wantsJson()) {
-            $setting= $setting->get();  
+            $setting= $setting->get();
             if ($setting) {
                 return response([
                     'status' => true,

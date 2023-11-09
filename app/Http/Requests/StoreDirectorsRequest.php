@@ -27,9 +27,9 @@ class StoreDirectorsRequest extends FormRequest
             'phone' => 'required|string',
             'image' => 'required|file',
             'designation' => 'required|string',
-            'biodata' => 'nullable|string',
-            'speech' => 'nullable|string',
-            'subject' => 'nullable|string',
+            'biodata' => 'required|string',
+            'speech' => 'required|string',
+            'subject' => 'required|string',
             'd_c_id' => 'required|integer',
             
         ];

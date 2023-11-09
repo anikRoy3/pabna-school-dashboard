@@ -15,13 +15,12 @@ return new class extends Migration
             $table->id();
             $table->string('title')->comment('required');
             $table->string('long_description')->nullable();
-            $table->enum('category', ['ক্লাব এবং সোসাইটি', 'মাল্টিমিডিয়া ক্লাস রুম', 'লাইব্রেরি', 'গেমস এবং স্পোর্টস', 'অনুষ্ঠান ও কর্মসূচি'])->comment('required');
-            $table->text('images')->comment('required');
+            $table->enum('category', ['ক্লাব এবং সোসাইটি', 'মাল্টিমিডিয়া ক্লাস রুম', 'লাইব্রেরি', 'গেমস এবং স্পোর্টস'])->comment('required');
+            $table->text('images')->default('')->comment('required');
             $table->boolean('status');
             $table->timestamps();
         });
     }
-    
 
     /**
      * Reverse the migrations.

@@ -50,19 +50,118 @@
                     </div>
                 </div>
             </div>
-            <!------- Services Information ------->
+
+             <!------- Notice Information ------->
+
+             <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mt-3">
+                <div class="small-box green-border">
+                    <div class="inner">
+                        <h3 class="text-success text-center">{{ bnNum($noticesCount) }}</h3>
+                        <p class="text-center">নোটিশসমূহ</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-exclamation-triangle mr-5"></i>
+                    </div>
+
+                    <div class="text-center mt-3">
+                        <a href="{{ route('notices.index') }}" class="btn btn-success">
+                            সকল নোটিশসমূহ
+                            <i class="fa-solid fa-arrow-right ml-3"></i>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+            <!------- Directors Information ------->
 
             <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 mt-2">
                 <div class="small-box green-border">
                     <div class="inner">
-                        <h3 class="text-center text-success"> {{ bnNum($serviceCount) }}</h3>
-                        <p class="text-center">সেবা</p>
+                        <h3 class="text-center text-success"> {{ bnNum($directors) }}</h3>
+                        <p class="text-center">পরিচালনা পর্ষদ ও শিক্ষকমন্ডলী</p>
                     </div>
                     <div class="icon mb-3">
                         <i class="fa-solid fa-toolbox"></i>
                     </div>
                     <div class="text-center mt-3">
-                        <a href="{{ route('services.index') }}" class="text-dark">এক্টিভ সেবা দেখুন <br>
+                        <a href="{{ route('directors.index') }}" class="text-dark">এক্টিভ দেখুন <br>
+                            <i class="fa-solid fa-arrow-right ml-3 text-success"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!------- Directors Categories Information ------->
+
+            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 mt-2">
+                <div class="small-box green-border">
+                    <div class="inner">
+                        <h3 class="text-center text-success"> {{ bnNum($directors_categories) }}</h3>
+                        <p class="text-center">পরিচালনা পর্ষদ ক্যাটাগরি</p>
+                    </div>
+                    <div class="icon mb-3">
+                        <i class="fa-solid fa-toolbox"></i>
+                    </div>
+                    <div class="text-center mt-3">
+                        <a href="{{ route('directors_categories.index') }}" class="text-dark">এক্টিভ দেখুন <br>
+                            <i class="fa-solid fa-arrow-right ml-3 text-success"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!------- School Activities Information ------->
+
+            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 mt-2">
+                <div class="small-box green-border">
+                    <div class="inner">
+                        <h3 class="text-center text-success"> {{ bnNum($school_activities) }}</h3>
+                        <p class="text-center">স্কুল কার্যক্রম</p>
+                    </div>
+                    <div class="icon mb-3">
+                        <i class="fa-solid fa-toolbox"></i>
+                    </div>
+                    <div class="text-center mt-3">
+                        <a href="{{ route('schoolActivities.index') }}" class="text-dark">এক্টিভ দেখুন <br>
+                            <i class="fa-solid fa-arrow-right ml-3 text-success"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!------- Ecucational Information ------->
+
+            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 mt-2">
+                <div class="small-box green-border">
+                    <div class="inner">
+                        <h3 class="text-center text-success"> {{ bnNum($academic) }}</h3>
+                        <p class="text-center">একাডেমিক</p>
+                    </div>
+                    <div class="icon mb-3">
+                        <i class="fa-solid fa-toolbox"></i>
+                    </div>
+                    <div class="text-center mt-3">
+                        <a href="{{ route('academic.index') }}" class="text-dark">এক্টিভ দেখুন <br>
+                            <i class="fa-solid fa-arrow-right ml-3 text-success"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+
+            <!------- Co-Curricular Information ------->
+
+            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 mt-2">
+                <div class="small-box green-border">
+                    <div class="inner">
+                        <h3 class="text-center text-success"> {{ bnNum($co_curricular) }}</h3>
+                        <p class="text-center">সহ-পাঠক্রম</p>
+                    </div>
+                    <div class="icon mb-3">
+                        <i class="fa-solid fa-toolbox"></i>
+                    </div>
+                    <div class="text-center mt-3">
+                        <a href="{{ route('coCurricular.index') }}" class="text-dark">এক্টিভ দেখুন <br>
                             <i class="fa-solid fa-arrow-right ml-3 text-success"></i>
                         </a>
                     </div>
@@ -116,27 +215,7 @@
                 </div>
             </div>
 
-            <!------- Notice Information ------->
-
-            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mt-3">
-                <div class="small-box green-border">
-                    <div class="inner">
-                        <h3 class="text-success text-center">{{ bnNum($noticesCount) }}</h3>
-                        <p class="text-center">নোটিশসমূহ</p>
-                    </div>
-                    <div class="icon">
-                        <i class="fas fa-exclamation-triangle mr-5"></i>
-                    </div>
-
-                    <div class="text-center mt-3">
-                        <a href="{{ route('notices.index') }}" class="btn btn-success">
-                            সকল নোটিশসমূহ
-                            <i class="fa-solid fa-arrow-right ml-3"></i>
-                        </a>
-                    </div>
-
-                </div>
-            </div>
+           
             <!-------Start জমি সংক্রান্ত মিডিয়া লিঙ্ক Information ------->
 
             <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 40px;">

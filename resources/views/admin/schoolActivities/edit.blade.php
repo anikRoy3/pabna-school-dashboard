@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
-@section('title', 'স্কুল কার্যক্রম তৈরি করুন')
-@section('content-header', 'স্কুল কার্যক্রম তৈরি করুন')
+@section('title', 'স্কুল কার্যক্রম আপডেট করুন')
+@section('content-header', 'স্কুল কার্যক্রম আপডেট করুন')
 
 @section('content')
 
@@ -17,15 +17,18 @@
                     <p>{{ $data->category }}</p>
                     <input type="text" hidden name="category" value="{{ $data->category }}">
                 </div>
-                <div class="form-group" id="long_description">
-                    <label for="long_description">বিবরণ</label>
-                    <textarea name="long_description" id="editor" class="form-control @error('long_description') is-invalid @enderror">{!! old('long_description', $data->long_description) !!}</textarea>
-                    @error('long_description')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
+                @if ($data->category != 'অনুষ্ঠান ও কর্মসূচি')
+                    <div class="form-group" id="long_description">
+                        <label for="long_description">বিবরণ</label>
+                        <textarea name="long_description" id="editor" class="form-control @error('long_description') is-invalid @enderror">{!! old('long_description', $data->long_description) !!}</textarea>
+                        @error('long_description')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                @else
+                @endif
                 <script>
                     ClassicEditor
                         .create(document.querySelector('#editor'))
@@ -59,10 +62,10 @@
                     @enderror
                 </div>
                 <div>
-                        @foreach (json_decode($data->images) as $imagePath)
-                            <img width="200" height="100" class="slider-img"
-                                src="{{ Storage::url($imagePath) }}" alt="">
-                        @endforeach
+                    @foreach (json_decode($data->images) as $imagePath)
+                        <img width="200" height="100" class="slider-img" src="{{ Storage::url($imagePath) }}"
+                            alt="">
+                    @endforeach
                 </div>
                 <div class="form-group" id="image-preview">
                     <!-- Image previews will be displayed here -->
@@ -81,7 +84,7 @@
                     @enderror
                 </div>
 
-                <button class="btn btn-primary" type="submit">তৈরি করুন</button>
+                <button class="btn btn-primary" type="submit">আপডেট  করুন</button>
                 <a href="{{ route('schoolActivities.index') }}" class="btn btn-danger">বাতিল করুন</a>
             </form>
         </div>

@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
-@section('title', 'স্কুল কার্যক্রম তৈরি করুন')
-@section('content-header', 'স্কুল কার্যক্রম তৈরি করুন')
+@section('title', 'অর্জন সমূহ তৈরি করুন')
+@section('content-header', 'অর্জন সমূহ তৈরি করুন')
 
 @section('content')
 
@@ -10,42 +10,9 @@
 
         <div class="card-body">
 
-            <form action="{{ route('schoolActivities.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('ourAchievement.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
 
-                <div class="form-group">
-                    <label for="category">ক্যাটাগরি</label>
-                    <select name="category" class="form-control" id="category">
-                        <option value="ক্লাব এবং সোসাইটি">ক্লাব এবং সোসাইটি</option>
-                        <option value="গেমস এবং স্পোর্টস">গেমস এবং স্পোর্টস</option>
-                        <option value="লাইব্রেরি">লাইব্রেরি</option>
-                        <option value="মাল্টিমিডিয়া ক্লাস রুম">মাল্টিমিডিয়া ক্লাস রুম</option>
-                    </select>
-                    @error('d_c_id')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
-                <div class="form-group" id="long_description">
-                    <label for="long_description">বিবরণ</label>
-                    <textarea name="long_description" id="editor" class="form-control @error('long_description') is-invalid @enderror">{{ old('long_description') }}</textarea>
-                    @error('long_description')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
-                <script>
-                    ClassicEditor
-                        .create(document.querySelector('#editor'))
-                        .then(editor => {
-                            editor.setData("{!! old('biodata') !!}");
-                        })
-                        .catch(error => {
-                            console.error(error);
-                        });
-                </script>
 
                 <div class="form-group">
                     <label for="title">শিরোনাম <span class="text-danger"> * </span></label>
@@ -90,7 +57,7 @@
                 </div>
 
                 <button class="btn btn-primary" type="submit">তৈরি করুন</button>
-                <a href="{{ route('schoolActivities.index') }}" class="btn btn-danger">বাতিল করুন</a>
+                <a href="{{ route('ourAchievement.index') }}" class="btn btn-danger">বাতিল করুন</a>
             </form>
         </div>
     </div>
@@ -118,6 +85,23 @@
                 image.style.marginRight = '10px'
                 imagePreview.appendChild(image);
             }
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            const category = $("#category");
+            const long_description=$("#long_description")
+            $('#category').on('change', function() {
+                const selectedCategory = $(this).val();
+                console.log(selectedCategory)
+                if (selectedCategory === 'অনুষ্ঠান ও কর্মসূচি') {
+                    long_description.hide();
+                   
+                } else {
+                    long_description.show();
+                }
+            });
         });
     </script>
 @endsection

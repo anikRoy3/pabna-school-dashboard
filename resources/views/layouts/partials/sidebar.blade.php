@@ -6,7 +6,7 @@
 
     <div id="header_logo">
         <a href="{{ route('home') }}" style="" class="">
-
+            {{-- @dd(Storage::url(App\Models\Setting::first()->school_logo)) --}}
             @if (@App\Models\Setting::first()->school_logo)
                 <img src="{{ Storage::url(App\Models\Setting::first()->school_logo) }}"
                     style=" height: 85px; width: 100%;" alt="Logo" class="brand-image">
@@ -98,41 +98,83 @@
                         <li class="nav-item">
                             <a href="{{ route('sliders.index') }}" class="nav-link {{ activeSegment('sliders') }} ml-4">
                                 <i class="fa-solid fa-sliders text-dark"></i>
-                                <p class=" active">স্লাইডার</p>
+                                <p class="active">স্লাইডার</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="#" class="nav-link  ml-4">
+                                <p class="active">আমাদের অর্জন</p>
+                                <i class="fas fa-angle-left right"></i>
+                            </a>
+                            <ul class="nav nav-treeview ml-4" style="display: none;">
+                                <li class="nav-item ml-4">
+                                    <a href="{{ route('ourAchievement.index') }}" class="nav-link">
+                                        অর্জনসমূহ
+                                    </a>
+                                    <a href="{{ route('ourAchievement.create') }}" class="nav-link">
+                                        যুক্ত করুন
+                                    </a>
+                                </li>
+                                <!-- Add more nested items if needed -->
+                            </ul>
+                        </li>
+
+
+                        {{-- <li class="nav-item has-treeview ">
+                            <a href="#" class="nav-link {{ activeSegment('ourAchievement') }} ml-4">
+                                <i class="fa-solid fa-sliders text-dark"></i>
+                                <p class="active">আমাদের অর্জন</p>
+                            </a>
+                            <ul class="nav nav-treeview ml-4">
+                                
+                                <!-- Add more nested items if needed -->
+                            </ul>
+                        </li> --}}
+                    </ul>
+                </li>
+                <li class="nav-item has-treeview ">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-home text-dark"></i>
+                        <p class="ml-2 active ">নোটিশ</p>
+                        <i class="fas fa-angle-left right"></i>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('notices.index') }}"
+                                class="nav-link {{ activeSegment('notices') }} ml-4">
+                                <i class="fa-solid fa-sliders text-dark"></i>
+                                <p class="active">নোটিশ সমূহ</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('notices.create') }}"
+                                class="nav-link {{ activeSegment('notices.create') }} ml-4">
+                                <i class="fa-solid fa-sliders text-dark"></i>
+                                <p class="active">যুক্ত করুন </p>
                             </a>
                         </li>
                     </ul>
-                </li>
-
-                {{-- End section of Home Page Menu --}}
-
-                <li class="nav-item has-treeview">
-                    <a href="{{ route('notices.index') }}" class="nav-link {{ activeSegment('notices') }}">
-                        <i class="fa-solid fa-triangle-exclamation text-dark"></i>
-                        <p class="ml-2">নোটিশ</p>
-                    </a>
                 </li>
 
                 {{-- srart saection of category --}}
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
                         <i class="fas fa-layer-group text-dark"></i>
-                        <p class="ml-2">পরিচালনা পর্ষদ ও শিক্ষকমন্ডলী</p>
+                        <p class="ml-2">শিক্ষকমন্ডলী</p>
                         <i class="fas fa-angle-left right"></i>
                     </a>
                     <ul class="nav nav-treeview">
-
                         <!-- Start section of সেবা -->
-
                         <li class="nav-item has-treeview">
-                            <a href="{{ route('directors_categories.index') }}"
+                            <a href="{{ route('directors.index') }}"
                                 class="nav-link {{ activeSegment('services') }} ml-4">
                                 <i class="fa-solid fa-toolbox text-dark"></i>
-                                <p class="">ক্যাটাগরি</p>
+                                <p class="">শিক্ষকগণ</p>
                             </a>
                         </li>
                         <li class="nav-item has-treeview">
-                            <a href="{{ route('directors.index') }}"
+                            <a href="{{ route('directors.create') }}"
                                 class="nav-link {{ activeSegment('services') }} ml-4">
                                 <i class="fa-solid fa-toolbox text-dark"></i>
                                 <p class="">যুক্ত করুন</p>
@@ -141,32 +183,98 @@
                         <!-- End section of সেবা -->
                     </ul>
                 </li>
+                {{-- srart saection of category --}}
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-layer-group text-dark"></i>
+                        <p class="ml-2">পরিচালনা পর্ষদ {{-- ও শিক্ষকমন্ডলী --}}</p>
+                        <i class="fas fa-angle-left right"></i>
+                    </a>
+                    <ul class="nav nav-treeview">
 
+                        <!-- Start section of সেবা -->
+                        <li class="nav-item has-treeview">
+                            <a href="{{ route('directors.index') }}"
+                                class="nav-link {{ activeSegment('services') }} ml-4">
+                                <i class="fa-solid fa-toolbox text-dark"></i>
+                                <p class="">পর্ষদগণ</p>
+                            </a>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="{{ route('directors.create') }}"
+                                class="nav-link {{ activeSegment('services') }} ml-4">
+                                <i class="fa-solid fa-toolbox text-dark"></i>
+                                <p class="">যুক্ত করুন</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item has-treeview">
+                            <a href="{{ route('directors_categories.index') }}"
+                                class="nav-link {{ activeSegment('services') }} ml-4">
+                                <i class="fa-solid fa-toolbox text-dark"></i>
+                                <p class="">ক্যাটাগরি</p>
+                            </a>
+                        </li>
+                        <!-- End section of সেবা -->
+                    </ul>
+                </li>
+
+
+                <li class="nav-item has-treeview ">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-home text-dark"></i>
+                        <p class="ml-2 active ">একাডেমিক</p>
+                        <i class="fas fa-angle-left right"></i>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('academic.index') }}"
+                                class="nav-link {{ activeSegment('academic') }} ml-4">
+                                <i class="fa-solid fa-sliders text-dark"></i>
+                                <p class="active">শিক্ষা বর্ষপঞ্জি</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('notices.create') }}"
+                                class="nav-link {{ activeSegment('notices.create') }} ml-4">
+                                <i class="fa-solid fa-sliders text-dark"></i>
+                                <p class="active">নিয়মকানুন</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('coCurricular.index') }}"
+                                class="nav-link {{ activeSegment('coCurricular') }} ml-4">
+                                <i class="fa-solid fa-sliders text-dark"></i>
+                                <p class="active">পরীক্ষা এবং ফলাফল</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
 
                 {{-- School activities start --}}
-                <li class="nav-item has-treeview">
+                {{-- <li class="nav-item has-treeview">
                     <a href="{{ route('schoolActivities.index') }}"
                         class="nav-link {{ activeSegment('schoolActivities') }}">
                         <i class="fa-solid fa-triangle-exclamation text-dark"></i>
                         <p class="ml-2">স্কুল কার্যক্রম</p>
                     </a>
-                </li>
+                </li> --}}
 
 
                 {{-- Academic section start --}}
-                <li class="nav-item has-treeview">
+              {{--   <li class="nav-item has-treeview">
                     <a href="{{ route('academic.index') }}" class="nav-link {{ activeSegment('academic') }}">
                         <i class="fa-solid fa-triangle-exclamation text-dark"></i>
                         <p class="ml-2">একাডেমিক</p>
                     </a>
-                </li>
+                </li> --}}
                 <!------- End section of Academic সমূহ ------->
 
 
                 {{-- Education section start --}}
 
                 <li class="nav-item has-treeview">
-                    <a href="{{ route('coCurricular.index') }}" class="nav-link {{ activeSegment('coCurricular') }}">
+                    <a href="{{ route('schoolActivities.index') }}" class="nav-link {{ activeSegment('coCurricular') }}">
                         <i class="fa-solid fa-triangle-exclamation text-dark"></i>
                         <p class="ml-2">সহ - পাঠক্রম</p>
                     </a>
@@ -188,7 +296,7 @@
 
                 <!-- Start section of প্রকল্প সম্পর্কিত -->
 
-          {{--       <li class="nav-item has-treeview">
+                {{--       <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
                         <i class="fa-solid fa-dharmachakra text-dark"></i>
                         <p class="ml-2">প্রকল্প সম্পর্কিত</p>
@@ -231,7 +339,7 @@
 
                 <!------- Start section of ডিজিটাল গার্ড ফাইল ------->
 
-               {{--  <li class="nav-item has-treeview" id="digital-guard-file">
+                {{--  <li class="nav-item has-treeview" id="digital-guard-file">
                     <a href="#" class="nav-link">
                         <i class="fa-regular fa-file-archive text-dark"></i>
                         <p class="ml-2">ডিজিটাল গার্ড ফাইল <i class="right fas fa-angle-left"></i></p>
@@ -271,7 +379,7 @@
 
 
 
-         {{--        <li class="nav-item has-treeview" id="digital-guard-file">
+                {{--        <li class="nav-item has-treeview" id="digital-guard-file">
                     <a href="{{ route('vhumi_sheba_forms.index') }}"
                         class="nav-link {{ activeSegment('vhumi_sheba_forms') }}">
                         <i class="fa-solid fa-sheet-plastic text-dark"></i>
@@ -310,7 +418,7 @@
                             @csrf
                         </form>
                     </a>
-                </li> 
+                </li>
             </ul>
         </nav>
         <!--End of sidebar-menu -->

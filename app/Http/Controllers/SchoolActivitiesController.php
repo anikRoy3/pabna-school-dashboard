@@ -82,7 +82,7 @@ class SchoolActivitiesController extends Controller
         $activity->save();
 
         // Redirect or return a response as needed
-        return redirect()->route('admin.schoolActivities.index')->with('success', 'Activity created successfully');
+        return redirect()->route('schoolActivities.index')->with('success', 'Activity created successfully');
     }
 
     /**

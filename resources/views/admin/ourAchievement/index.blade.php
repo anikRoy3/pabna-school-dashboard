@@ -1,9 +1,9 @@
 @extends('layouts.admin')
 
-@section('title', 'নোটিশ তালিকা')
-@section('content-header', 'স্কুল সংক্রান্ত নোটিশ তালিকা')
+@section('title', 'আমাদের অর্জন সমূহের তালিকা')
+@section('content-header', 'আমাদের অর্জন সমূহের তালিকা ')
 @section('content-actions')
-    <a href="{{ route('academic.create') }}" class="btn btn-success">তৈরি করুন</a>
+    <a href="{{ route('ourAchievement.create') }}" class="btn btn-success">তৈরি করুন</a>
 @endsection
 @section('css')
     <link rel="stylesheet" href="{{ asset('plugins/sweetalert2/sweetalert2.min.css') }}">
@@ -31,38 +31,40 @@
     </style>
 @endsection
 @section('content')
+
+
     <div class="card slider-list">
         <div class="table-responsive card-body p-0"> <!-- Wrap table in a responsive container -->
             <table class="table">
                 <thead>
                     <tr class="">
-                        <th>সিরিয়াল</th>
-                        <th>নোটিশ</th>
-                        <th>PDF ফাইল</th>
-                        <th>স্ট্যাটাস</th>
-                        <th>প্রক্রিয়া</th>
+                        <th style="color: black">শিরোনাম</th>
+                        <th style="color: black">ছবি সমূহ</th>
+                        <th style="color: black">স্ট্যাটাস</th>
+                        <th style="color: black" class="text-center">অ্যাকশন</th>
                     </tr>
                 </thead>
                 <tbody>
                     @forelse ($data as $index => $item)
                         <tr>
-                            <td>{{ $item->id }}</td>
                             <td>{{ $item->title }}</td>
                             <td>
-                                <a href="{{ Storage::url($item->pdf) }}" target="_blank">পিডিএফ দেখুন</a>
+                                @foreach (json_decode($item->images) as $imagePath)
+                                    <img width="200" height="100" class="slider-img"
+                                        src="{{ Storage::url($imagePath) }}" alt="">
+                                @endforeach
                             </td>
                             <td>
                                 <span
                                     class="p-2 mt-1 right badge badge-{{ $item->status ? 'success' : 'danger' }}">{{ $item->status ? 'সক্রিয়' : 'নিষ্ক্রিয়' }}
                                 </span>
                             </td>
-
                             <td class="text-center d-flex justify-content-center align-items-center">
-                                <a href="{{ route('academic.edit', $item) }}" class="btn btn-primary btn-sm"><i
+                                <a href="{{ route('ourAchievement.edit', $item) }}" class="btn btn-primary btn-sm"><i
                                         class="fas fa-edit"></i>
                                 </a>
-                                <button data-id="{{ $item->id }}" class="btn btn-danger btn-sm btn-delete ml-1"
-                                    data-url="{{ route('academic.destroy', $item) }}">
+                                <button class="btn btn-danger btn-sm btn-delete ml-1" data-id="{{$item->id}}"
+                                    data-url="{{ route('ourAchievement.destroy', $item) }}">
                                     <i class="fas fa-trash"></i>
                                 </button>
                             </td>
@@ -71,8 +73,7 @@
                     @empty
                         <tr>
                             <td colspan="5" class="text-center d-flex justify-content-center align-items-center">তথ্য
-                                পাওয়া যাচ্ছে না!
-                            </td>
+                                পাওয়া যাচ্ছে না!</td>
                         </tr>
                     @endforelse
                 </tbody>
@@ -94,6 +95,7 @@
                     },
                     buttonsStyling: false
                 });
+
                 swalWithBootstrapButtons.fire({
                     title: 'আপনি কি নিশ্চিত?',
                     text: "আপনি কি সত্যিই এই বিজ্ঞপ্তিটি মুছতে চান?",
@@ -104,11 +106,11 @@
                     reverseButtons: true
                 }).then((result) => {
                     if (result.value) {
-                        const id = $this.data('id')
+                        const id = $this.data('id');
                         $.post($this.data('url'), {
                             _method: 'DELETE',
                             _token: '{{ csrf_token() }}',
-                            _body: id
+                            _body:id
                         }, function(res) {
                             $this.closest('tr').fadeOut(500, function() {
                                 $(this).remove();

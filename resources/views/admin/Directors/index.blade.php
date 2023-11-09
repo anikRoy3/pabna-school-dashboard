@@ -143,7 +143,7 @@
                             }, function(res) {
                                 console.log(res);
                                 $this.closest('tr').fadeOut(500, function(){
-                                    $(this).remove();
+                                    $(this  ).remove();
                                 });
                             })
                         }

@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
-@section('title', 'স্কুল কার্যক্রম তৈরি করুন')
-@section('content-header', 'স্কুল কার্যক্রম তৈরি করুন')
+@section('title', 'অর্জন সমূহ আপডেট করুন')
+@section('content-header', 'অর্জন সমূহ আপডেট করুন')
 
 @section('content')
 
@@ -9,60 +9,25 @@
         <script src="https://cdn.ckeditor.com/ckeditor5/11.0.1/classic/ckeditor.js"></script>
 
         <div class="card-body">
-
-            <form action="{{ route('schoolActivities.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('ourAchievement.update', $data) }}" method="POST" enctype="multipart/form-data">
                 @csrf
-
-                <div class="form-group">
-                    <label for="category">ক্যাটাগরি</label>
-                    <select name="category" class="form-control" id="category">
-                        <option value="ক্লাব এবং সোসাইটি">ক্লাব এবং সোসাইটি</option>
-                        <option value="গেমস এবং স্পোর্টস">গেমস এবং স্পোর্টস</option>
-                        <option value="লাইব্রেরি">লাইব্রেরি</option>
-                        <option value="মাল্টিমিডিয়া ক্লাস রুম">মাল্টিমিডিয়া ক্লাস রুম</option>
-                    </select>
-                    @error('d_c_id')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
-                <div class="form-group" id="long_description">
-                    <label for="long_description">বিবরণ</label>
-                    <textarea name="long_description" id="editor" class="form-control @error('long_description') is-invalid @enderror">{{ old('long_description') }}</textarea>
-                    @error('long_description')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
-                <script>
-                    ClassicEditor
-                        .create(document.querySelector('#editor'))
-                        .then(editor => {
-                            editor.setData("{!! old('biodata') !!}");
-                        })
-                        .catch(error => {
-                            console.error(error);
-                        });
-                </script>
-
+                @method('PUT')
                 <div class="form-group">
                     <label for="title">শিরোনাম <span class="text-danger"> * </span></label>
                     <input type="text" name="title" class="form-control @error('title') is-invalid @enderror"
-                        id="title" placeholder="শিরোনাম লিখুন" value="{{ old('title') }}">
+                        id="title" placeholder="শিরোনাম লিখুন" value="{{ old('title', $data->title) }}">
                     @error('title')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
-                </div>  
+                </div>
 
                 <div class="form-group">
                     <label for="image">ছবি <span class="text-danger"> * </span> <small class="text-success">(একের অধিক
                             ছবি আপলোড দিতে পারেন)</small></label>
                     <div class="custom-file">
-                        <input type="file" required class="custom-file-input" name="images[]" id="image" multiple>
+                        <input type="file" class="custom-file-input" name="images[]" id="image" multiple>
                         <label class="custom-file-label" for="image" id="image-label">ছবি নির্বাচন করুন</label>
                     </div>
                     @error('images')
@@ -71,7 +36,12 @@
                         </span>
                     @enderror
                 </div>
-
+                <div>
+                    @foreach (json_decode($data->images) as $imagePath)
+                        <img width="200" height="100" class="slider-img" src="{{ Storage::url($imagePath) }}"
+                            alt="">
+                    @endforeach
+                </div>
                 <div class="form-group" id="image-preview">
                     <!-- Image previews will be displayed here -->
                 </div>
@@ -89,8 +59,8 @@
                     @enderror
                 </div>
 
-                <button class="btn btn-primary" type="submit">তৈরি করুন</button>
-                <a href="{{ route('schoolActivities.index') }}" class="btn btn-danger">বাতিল করুন</a>
+                <button class="btn btn-primary" type="submit">আপডেট  করুন</button>
+                <a href="{{ route('ourAchievement.index') }}" class="btn btn-danger">বাতিল করুন</a>
             </form>
         </div>
     </div>
@@ -120,4 +90,5 @@
             }
         });
     </script>
+
 @endsection
