@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
-@section('title', 'সেটিংস আপডেট করুন')
-@section('content-header', 'সেটিংস আপডেট করুন')
+@section('title', 'সেটিংস হালনাগাদ করুন')
+@section('content-header', 'সেটিংস হালনাগাদ করুন')
 
 @section('css')
 
@@ -18,14 +18,14 @@
 @section('content')
     <div class="card">
         <div class="card-body">
-            <form action="{{ route('settings.update', $data) }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('settings.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
-                @method('put')
+
                 <div class="form-group">
                     <label for="school_name">স্কুলের নাম</label>
                     <input type="text" name="school_name" class="form-control @error('school_name') is-invalid @enderror"
                         id="school_name" placeholder="স্কুলের নাম"
-                        value="{{old('school_name', $data->school_name)}}">
+                        value="{{old('school_name')}}">
                     @error('school_name')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -39,7 +39,7 @@
                                     নির্বাচিত ফাইলের আকার 2MB এর নিচে হতে হবে )</small></span> </label>
                     </div>
                     <div class="p-2 ">
-                        <img src="{{ Storage::url(App\Models\Setting::first()->school_logo) }}" style="height: 90px;"
+                        <img src="{{old('school_logo')}}" style="height: 90px;"
                             alt="Logo" class="">
                     </div>
                     <div class="custom-file">
@@ -49,7 +49,7 @@
                         <label class="custom-file-label" for="school_logo">লোগো নির্বাচন করুন</label>
                     </div>
 
-                    @error('school_name')
+                    @error('school_logo')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -57,18 +57,18 @@
                 </div>
                 <div class="form-group">
                     <label for="EIIN_num">EIIN নং:</label>
-                    <input type="number" name="EIIN_no" class="form-control @error('EIIN_num') is-invalid @enderror"
-                        id="EIIN_num" placeholder="EIIN নং:" value="{{old('EIIN_num', $data->EIIN_no)}}">
-                    @error('EIIN_num')
+                    <input type="text" value="{{old('EIIN_no')}}" name="EIIN_no" class="form-control @error('EIIN_no') is-invalid @enderror"
+                        id="EIIN_num" placeholder="EIIN নং:" value="">
+                    @error('EIIN_no')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label for="college_code">কলেজ কোড</label>
-                    <input type="number" name="college_code" class="form-control @error('college_code') is-invalid @enderror"
-                        id="college_code" placeholder="কলেজ কোড" value="{{old('college_code', $data->college_code)}}">
+                    <label for="collegeCode">কলেজ কোড</label>
+                    <input type="number" value="{{old('college_code')}}" name="college_code" class="form-control @error('college_code') is-invalid @enderror"
+                        id="collegeCode" placeholder="কলেজ কোড" value="">
                     @error('college_code')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -76,9 +76,9 @@
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label for="school_code">স্কুল কোড</label>
-                    <input type="number" name="school_code" class="form-control @error('school_code') is-invalid @enderror"
-                        id="school_code" placeholder="স্কুল কোড" value="{{old('school_code', $data->school_code)}}">
+                    <label for="schoolCode">স্কুল কোড</label>
+                    <input type="number" value="{{old('school_code')}}" name="school_code" class="form-control @error('school_code') is-invalid @enderror"
+                        id="schoolCode" placeholder="স্কুল কোড" value="">
                     @error('school_code')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -91,19 +91,14 @@
                     </span>
                     <span id="e_minus_btn" onclick="toggleEmailField(false)" style="display: none;"><i class="fas fa-minus"></i>
                     </span>
-                    {{-- @dd(json_decode($data->emails)[0])  --}}
-                    <input type="email" value="{{old('email_1', json_decode($data->emails)[0])}}" name="email_1" class="form-control @error('email_1') is-invalid @enderror" id="email_1" placeholder="ইমেল" value="">
+                    <input type="email" name="email_1" class="form-control @error('email_1') is-invalid @enderror" id="email_1" placeholder="ইমেল" value="">
                     @error('email_1')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
-                    <input hidden type="email" name="email_2" class="form-control mt-2 @error('email_2') is-invalid @enderror" id="email_2" placeholder="ইমেল" value="{{old('email_2', count(json_decode($data->emails)) > 1 ? json_decode($data->emails)[1] : '')}}">
-                    @error('email_2')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
+                    <input hidden type="email" name="email_2" class="form-control mt-2 @error('email_2') is-invalid @enderror" id="email_2" placeholder="ইমেল" value="">
+                   
                 </div>
                 <div class="form-group">
                     <label for="mobile_1">মোবাইল-নং</label>
@@ -111,20 +106,17 @@
                     </span>
                     <span id="m_minus_btn" onclick="toggleMobileField(false)" style="display: none;"><i class="fas fa-minus"></i>
                     </span>
-                    <input type="text" value="{{old('mobile_number_1', json_decode($data->mobile_numbers)[0])}}" name="mobile_number_1" class="form-control @error('mobile_1') is-invalid @enderror" id="mobile_1" placeholder="ইমেল" value="">
-                    @error('mobile_1')
+                    <input type="text" name="mobile_number_1" class="form-control @error('mobile_number_1') is-invalid @enderror" id="mobile_1" placeholder="ইমেল" value="">
+                    @error('mobile_number_1')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
-                    <input hidden type="text" name="mobile_number_2" class="form-control mt-2 @error('mobile_2') is-invalid @enderror" id="mobile_2" placeholder="ইমেল" value="{{old('mobile_number_2', count(json_decode($data->mobile_numbers)) > 1 ? json_decode($data->mobile_numbers)[1] : '')}}">
-                    @error('mobile_2')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
+                    <input hidden type="text" name="mobile_number_2" class="form-control mt-2" id="mobile_2" placeholder="ইমেল" value="">
+                   
                 </div>
                 <button type="submit" class="btn btn-primary">হালনাগাদ করুন</button>
+                <a href="{{ route('settings.index') }}" class="btn btn-danger">বাতিল করুন</a>
             </form>
         </div>
     </div>

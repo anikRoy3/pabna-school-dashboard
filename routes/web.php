@@ -33,6 +33,8 @@ use App\Http\Controllers\NagorikerSubidhaController;
 use App\Http\Controllers\ProkolperOutputController;
 use App\Http\Controllers\DirectorsController;
 use App\Http\Controllers\OurAchievementController;
+use App\Http\Controllers\SettingsController;
+use App\Http\Controllers\TeachersController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -46,8 +48,6 @@ Route::prefix('admin')/* ->middleware('auth') */->group(function () {
 
     Route::get('/', [HomeController::class, 'index'])->name('home');
 
-    Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');
-    Route::put('/settings', [SettingController::class, 'update'])->name('settings.update');
     Route::resource('products', ProductController::class);
     // Route::resource('customers', CustomerController::class);
     Route::resource('orders', OrderController::class);
@@ -101,5 +101,7 @@ Route::prefix('admin')/* ->middleware('auth') */->group(function () {
     Route::resource('coCurricular', CoCurricularController::class);
     Route::resource('admission', AdmissionController::class);
     Route::resource('ourAchievement', OurAchievementController::class);
+    Route::resource('teachers', TeachersController::class);
+    Route::resource('settings', SettingsController::class);
 }); 
 

@@ -157,32 +157,7 @@
                     </ul>
                 </li>
 
-                {{-- srart saection of category --}}
-                <li class="nav-item has-treeview">
-                    <a href="#" class="nav-link">
-                        <i class="fas fa-layer-group text-dark"></i>
-                        <p class="ml-2">শিক্ষকমন্ডলী</p>
-                        <i class="fas fa-angle-left right"></i>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <!-- Start section of সেবা -->
-                        <li class="nav-item has-treeview">
-                            <a href="{{ route('directors.index') }}"
-                                class="nav-link {{ activeSegment('services') }} ml-4">
-                                <i class="fa-solid fa-toolbox text-dark"></i>
-                                <p class="">শিক্ষকগণ</p>
-                            </a>
-                        </li>
-                        <li class="nav-item has-treeview">
-                            <a href="{{ route('directors.create') }}"
-                                class="nav-link {{ activeSegment('services') }} ml-4">
-                                <i class="fa-solid fa-toolbox text-dark"></i>
-                                <p class="">যুক্ত করুন</p>
-                            </a>
-                        </li>
-                        <!-- End section of সেবা -->
-                    </ul>
-                </li>
+
                 {{-- srart saection of category --}}
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
@@ -218,7 +193,32 @@
                         <!-- End section of সেবা -->
                     </ul>
                 </li>
-
+                {{-- srart saection of category --}}
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-layer-group text-dark"></i>
+                        <p class="ml-2">শিক্ষকমন্ডলী</p>
+                        <i class="fas fa-angle-left right"></i>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <!-- Start section of সেবা -->
+                        <li class="nav-item has-treeview">
+                            <a href="{{ route('teachers.index') }}"
+                                class="nav-link {{ activeSegment('services') }} ml-4">
+                                <i class="fa-solid fa-toolbox text-dark"></i>
+                                <p class="">শিক্ষকগণ</p>
+                            </a>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="{{ route('teachers.create') }}"
+                                class="nav-link {{ activeSegment('services') }} ml-4">
+                                <i class="fa-solid fa-toolbox text-dark"></i>
+                                <p class="">যুক্ত করুন</p>
+                            </a>
+                        </li>
+                        <!-- End section of সেবা -->
+                    </ul>
+                </li>
 
                 <li class="nav-item has-treeview ">
                     <a href="#" class="nav-link">
@@ -262,7 +262,7 @@
 
 
                 {{-- Academic section start --}}
-              {{--   <li class="nav-item has-treeview">
+                {{--   <li class="nav-item has-treeview">
                     <a href="{{ route('academic.index') }}" class="nav-link {{ activeSegment('academic') }}">
                         <i class="fa-solid fa-triangle-exclamation text-dark"></i>
                         <p class="ml-2">একাডেমিক</p>
@@ -274,7 +274,8 @@
                 {{-- Education section start --}}
 
                 <li class="nav-item has-treeview">
-                    <a href="{{ route('schoolActivities.index') }}" class="nav-link {{ activeSegment('coCurricular') }}">
+                    <a href="{{ route('schoolActivities.index') }}"
+                        class="nav-link {{ activeSegment('coCurricular') }}">
                         <i class="fa-solid fa-triangle-exclamation text-dark"></i>
                         <p class="ml-2">সহ - পাঠক্রম</p>
                     </a>

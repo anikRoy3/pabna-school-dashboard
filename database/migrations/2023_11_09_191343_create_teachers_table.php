@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('phone')->comment('required');
             $table->string('designation')->comment('required');
             $table->string('lastDegree')->comment('required');
+            $table->string('image')->comment('required');
             $table->enum('section', ['day', 'morning', 'others'])->comment('required');
             $table->boolean('status');
             $table->timestamps();
