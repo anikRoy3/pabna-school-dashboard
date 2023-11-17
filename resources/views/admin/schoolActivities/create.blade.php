@@ -56,14 +56,14 @@
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
-                </div>  
+                </div>
 
                 <div class="form-group">
                     <label for="image">ছবি <span class="text-danger"> * </span> <small class="text-success">(একের অধিক
                             ছবি আপলোড দিতে পারেন)</small></label>
                     <div class="custom-file">
-                        <input type="file" required class="custom-file-input" name="images[]" id="image" multiple>
-                        <label class="custom-file-label" for="image" id="image-label">ছবি নির্বাচন করুন</label>
+                        <input type="file" required class="custom-file-input" name="images[]" id="s_a_images" multiple>
+                        <label class="custom-file-label" for="images" id="image-label">ছবি নির্বাচন করুন</label>
                     </div>
                     @error('images')
                         <span class="invalid-feedback" role="alert">
@@ -105,19 +105,22 @@
     </script>
 
     <script>
-        document.querySelector('#image').addEventListener('change', function(e) {
-            const fileList = e.target.files;
-            const imagePreview = document.querySelector('#image-preview');
-            imagePreview.innerHTML = '';
+        document.addEventListener('DOMContentLoaded', function(){
+            document.querySelector('#s_a_images').addEventListener('change', function(e) {
+                const fileList = e.target.files;
+                const imagePreview = document.querySelector('#image-preview');
+                imagePreview.innerHTML = '';
+    
+                for (let i = 0; i < fileList.length; i++) {
+                    const image = document.createElement('img');
+                    image.src = URL.createObjectURL(fileList[i]);
+                    image.style.width = '100px';
+                    image.style.height = '100px';
+                    image.style.marginRight = '10px'
+                    imagePreview.appendChild(image);
+                }
+            });
 
-            for (let i = 0; i < fileList.length; i++) {
-                const image = document.createElement('img');
-                image.src = URL.createObjectURL(fileList[i]);
-                image.style.width = '100px';
-                image.style.height = '100px';
-                image.style.marginRight = '10px'
-                imagePreview.appendChild(image);
-            }
-        });
+        })
     </script>
 @endsection

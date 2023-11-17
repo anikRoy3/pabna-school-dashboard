@@ -56,7 +56,7 @@ class AcademicController extends Controller
         $rules = [
             'show_sl' => 'nullable|integer',
             'title' => 'required|string',
-            'pdf' => 'nullable|file',
+            'pdf_file' => 'required|file',
             'status' => 'required|boolean',
         ];
 
@@ -65,7 +65,7 @@ class AcademicController extends Controller
 
 
         // Handle file upload
-        $pdfPath = $request->file('pdf_file')->store('pdfs', 'public');
+            $pdfPath = $request->file('pdf_file')->store('pdfs', 'public');
         // dd($request->all());
 
         // Create a new Academic instance

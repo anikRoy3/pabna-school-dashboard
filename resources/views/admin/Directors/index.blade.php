@@ -37,12 +37,14 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th style="color: black">image</th>
+                        <th style="color: black">ছবি</th>
                         <th style="color: black">ক্যাটাগরি</th>
                         <th style="color: black">নাম</th>
                         <th style="color: black">ই-মেইল</th>
                         <th style="color: black">মোবাইল-নং</th>
                         <th style="color: black">পেশা</th>
+                        <th style="color: black">জীবন বৃত্তান্ত</th>
+                        <th style="color: black">বাণী </th>
                         <th style="color: black">অ্যাকশন</th>
                     </tr>
                 </thead>
@@ -56,9 +58,8 @@
                                     @case(1)
                                         গভর্নিং বডি
                                     @break
-
                                     @case(2)
-                                        অধ্যক্ষ
+                                        প্রাক্তন পর্ষদ
                                     @break
 
                                     @case(3)
@@ -66,7 +67,7 @@
                                     @break
 
                                     @default
-                                        প্রাক্তন পর্ষদ
+                                        অধ্যক্ষ
                                 @endswitch
                             </td>
                             <td>{{ $item->name }}</td>
@@ -74,6 +75,8 @@
                             <td>{{ $item->email }}</td>
                             <td>{{ $item->phone }}</td>
                             <td>{{ $item->designation }}</td>
+                            <td>{!! $item->biodata !!}</td>
+                            <td>{!! $item->speech !!}</td>
                             {{--   <td>{{ $item->is_top ? 'হ্যাঁ' : 'না' }}</td>
                             <td>{{ $item->notice }}</td>
                             <td>
@@ -89,7 +92,7 @@
                                 <a href="{{ route('directors.edit', $item) }}" class="btn btn-primary btn-sm"><i
                                         class="fas fa-edit"></i>
                                 </a>
-                                <button data-id="{{$item->id}}" class="btn btn-danger btn-sm btn-delete ml-1"
+                                <button data-id="{{ $item->id }}" class="btn btn-danger btn-sm btn-delete ml-1"
                                     data-url="{{ route('directors.destroy', $item) }}">
                                     <i class="fas fa-trash"></i>
                                 </button>
@@ -142,8 +145,8 @@
                                 _body: id
                             }, function(res) {
                                 console.log(res);
-                                $this.closest('tr').fadeOut(500, function(){
-                                    $(this  ).remove();
+                                $this.closest('tr').fadeOut(500, function() {
+                                    $(this).remove();
                                 });
                             })
                         }

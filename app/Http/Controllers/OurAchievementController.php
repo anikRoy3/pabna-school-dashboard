@@ -15,6 +15,29 @@ class OurAchievementController extends Controller
     public function index()
     {
         $achievement = new OurAchievement();
+
+        if (request()->wantsJson()) {
+            $data = $achievement->get();
+
+            if ($data) {
+                return response([
+                    'status' => true,
+                    'message' => 'Data Show Successfully',
+                    'code' => 200,
+                    'data' => $data,
+
+                ], 200);
+            } else {
+                return response([
+                    'status' => false,
+                    'message' => 'তথ্য পাওয়া যায়নি',
+                    'code' => 404,
+                    'data' => null,
+
+                ], 404);
+            }
+        }
+
         $data = $achievement->all();
         return view("admin.ourAchievement.index", compact("data"));
     }
@@ -127,13 +150,14 @@ class OurAchievementController extends Controller
      */
     public function destroy(Request $request)
     {
-        $id= $request->_body;
+        $id = $request->_body;
         $data = OurAchievement::find($id);
-        if($data->image){
-                Storage::delete($data->image);
+        if ($data->image) {
+            Storage::delete($data->image);
         }
         $data->delete();
         return response()->json([
             'success' => true
-        ]);;    }
+        ]);;
+    }
 }

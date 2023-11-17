@@ -66,6 +66,16 @@
                     @enderror
                 </div>
                 <div class="form-group">
+                    <label for="address">ঠিকানা</label>
+                    <input type="text" value="{{old('address')}}" name="address" class="form-control @error('address') is-invalid @enderror"
+                        id="address" placeholder="ঠিকানা" value="">
+                    @error('address')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+                <div class="form-group">
                     <label for="collegeCode">কলেজ কোড</label>
                     <input type="number" value="{{old('college_code')}}" name="college_code" class="form-control @error('college_code') is-invalid @enderror"
                         id="collegeCode" placeholder="কলেজ কোড" value="">

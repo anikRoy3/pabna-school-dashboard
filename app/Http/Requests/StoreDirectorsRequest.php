@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreDirectorsRequest extends FormRequest
+class   StoreDirectorsRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,11 +25,10 @@ class StoreDirectorsRequest extends FormRequest
             'name' => 'required|string',
             'email' => 'required|email|unique:directors,email',
             'phone' => 'required|string',
-            'image' => 'required|file',
+            'image' => 'nullable|file',
             'designation' => 'required|string',
             'biodata' => 'required|string',
             'speech' => 'required|string',
-            'subject' => 'required|string',
             'd_c_id' => 'required|integer',
             
         ];

@@ -52,28 +52,35 @@ class DirectorsController extends Controller
     }
 
 
-    public function store(StoreDirectorsRequest $request)
+    public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required|string',
+            'email' => 'required|email|unique:directors,email',
+            'phone' => 'required|string',
+            'image' => 'nullable|file',
+            'designation' => 'required|string',
+            'biodata' => 'required|string',
+            'speech' => 'required|string',
+            'd_c_id' => 'required|integer',
+        ]);
 
-        if ($request->hasFile('image')) {
-            // Handle image upload here
-            $image_path = $request->file('image')->store('directors', 'public');
 
-            // Save the image path in the 'image' column of the database
-            $director = Directors::create([
-                "name" => $request->input('name'),
-                "email" => $request->input('email'),
-                "phone" => $request->input('phone'),
-                "image" => $image_path,
-                "designation" => $request->input('designation'),
-                "biodata" => $request->input('biodata'),
-                "speech" => $request->input('speech'),
-                "subject" => $request->input('subject'),
-                "d_c_id" => $request->input('d_c_id'),
+        $image_path = $request->file('image')->store('directors', 'public');
 
-            ]);
-            $director->save();
-        }
+        // Save the image path in the 'image' column of the database
+        $director = Directors::create([
+            "name" => $request->input('name'),
+            "email" => $request->input('email'),
+            "phone" => $request->input('phone'),
+            "image" => $image_path,
+            "designation" => $request->input('designation'),
+            "biodata" => $request->input('biodata'),
+            "speech" => $request->input('speech'),
+            "subject" => $request->input('subject'),
+            "d_c_id" => $request->input('d_c_id'),
+        ]);
+
         if (!$director) {
             return redirect()->back()->with('error', 'দুঃখিত, পরিচালক তৈরি করার সময় একটি সমস্যা হয়েছে৷');
         }
@@ -146,10 +153,10 @@ class DirectorsController extends Controller
      */
     public function destroy(Request $request)
     {
-        $id= $request->_body;
+        $id = $request->_body;
         $data = Directors::find($id);
-        if($data->image){
-                Storage::delete($data->image);
+        if ($data->image) {
+            Storage::delete($data->image);
         }
         $data->delete();
         return response()->json([

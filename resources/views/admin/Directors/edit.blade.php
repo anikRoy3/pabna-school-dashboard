@@ -13,7 +13,7 @@
                 @method('PUT')
                 <div class="form-group">
                     <label for="d_c_id">ক্যাটাগরি</label>
-                    <input type="text" hidden name="d_c_id" value="{{$data->d_c_id}}">
+                    <input type="text" hidden name="d_c_id" value="{{ $data->d_c_id }}">
                     <p> @switch($data->d_c_id)
                             @case(1)
                                 গভর্নিং বডি
@@ -31,17 +31,7 @@
                                 প্রাক্তন পর্ষদ
                         @endswitch
                     </p>
-                    {{--  <select name="d_c_id" class="form-control @error('d_c_id') is-invalid @enderror" id="d_c_id">
-                        @foreach ($categories as $d_c_id)
-                            <option value="{{ $d_c_id->id  +0}}">
-                                {{ $d_c_id->name }}</option>
-                        @endforeach
-                    </select>
-                    @error('d_c_id')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror --}}
+
                 </div>
 
                 <div class="form-group">
@@ -74,19 +64,19 @@
                         </span>
                     @enderror
                 </div>
-                @if ($data->d_c_id == 3)
-                    <div class="form-group" id="subject">
-                        <label for="subject">বিষয়<span class="text-danger"> * </span></label>
-                        <input type="text" name="subject" class="form-control  @error('subject') is-invalid @enderror"
-                            id="subject" placeholder="বিষয় লিখুন" value="{{ old('subject', $data->subject) }}">
-                        @error('subject')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                  <div class="form-group">
+                    <label for="image">ছবি <span class="text-danger"> * </span> <small class="text-danger">( নির্বাচিত
+                            ফাইলের আকার 2MB এর নিচে হতে হবে )</small> </label>
+                    <div class="custom-file">
+                        <input type="file" required class="custom-file-input" name="image" id="image">
+                        <label class="custom-file-label" for="image">ছবি নির্বাচন করুন</label>
                     </div>
-                @else
-                @endif
+                    @error('image')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
                 <div class="form-group">
                     <label for="phone">মোবাইল-নং <span class="text-danger"> * </span></label>
                     <input type="text" name="phone" class="form-control @error('phone') is-invalid @enderror"
@@ -97,66 +87,48 @@
                         </span>
                     @enderror
                 </div>
-                <div class="form-group">
-                    <label for="image">ছবি <span class="text-danger"> * </span> <small class="text-danger">( নির্বাচিত
-                            ফাইলের আকার 2MB এর নিচে হতে হবে )</small> </label>
-                    <div class="mb-2">
-                        <img width="200" height="100" class="slider-img" src="{{ Storage::url($data->image) }}"
-                            alt="">
-                    </div>
-                    <div class="custom-file">
-                        <input type="file" class="custom-file-input" name="image" id="image">
-                        <label class="custom-file-label" for="image">ছবি নির্বাচন করুন</label>
-                    </div>
-                    @error('image')
+
+                {{-- @dd($data) --}}
+                <div class="form-group" id="biodata">
+                    <label for="biodata">জীবন বৃত্তান্ত</label>
+                    <textarea name="biodata" id="editorBio" class="form-control @error('biodata') is-invalid @enderror">{{ old('biodata', $data->biodata) }}</textarea>
+                    @error('biodata')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
                 </div>
+                <script>
+                    ClassicEditor
+                        .create(document.querySelector('#editorBio'))
+                        .then(editor => {
+                            // Set the content of CKEditor from old input or session
+                            editor.setData("{!! old('biodata', $data->biodata) !!}");
+                        })
+                        .catch(error => {
+                            console.error(error);
+                        });
+                </script>
+                <div class="form-group" id="speech">
+                    <label for="speech">বাণী </label>
+                    <textarea name="speech" id="editor2Bio" class="form-control @error('speech') is-invalid @enderror">{{ old('speech', $data->speech) }}</textarea>
+                    @error('speech')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+                <script>
+                    ClassicEditor
+                        .create(document.querySelector('#editor2Bio'))
+                        .then(editor => {
+                            editor.setData("{!! old('speech', $data->speech) !!}");
+                        })
+                        .catch(error => {
+                            console.error(error);
+                        });
+                </script>
 
-                @if ($data->d_c_id !== 3)
-                    <div class="form-group" id="biodata">
-                        <label for="biodata">জীবন বৃত্তান্ত</label>
-                        <textarea name="biodata" id="editor" class="form-control @error('biodata') is-invalid @enderror">{{ old('biodata', $data->biodata) }}</textarea>
-                        @error('biodata')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                    <script>
-                        ClassicEditor
-                            .create(document.querySelector('#editor'))
-                            .then(editor => {
-                                // Set the content of CKEditor from old input or session
-                                editor.setData("{!! old('biodata') !!}");
-                            })
-                            .catch(error => {
-                                console.error(error);
-                            });
-                    </script>
-                    <div class="form-group" id="speech">
-                        <label for="speech">বাণী </label>
-                        <textarea name="speech" id="editor2" class="form-control @error('speech') is-invalid @enderror">{{ old('speech', $data->speech) }}</textarea>
-                        @error('speech')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                    <script>
-                        ClassicEditor
-                            .create(document.querySelector('#editor2'))
-                            .then(editor => {
-                                editor.setData("{!! old('speech') !!}");
-                            })
-                            .catch(error => {
-                                console.error(error);
-                            });
-                    </script>
-                @else
-                @endif
 
 
                 {{--  <div class="form-group">

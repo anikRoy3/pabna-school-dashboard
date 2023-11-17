@@ -235,8 +235,8 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('notices.create') }}"
-                                class="nav-link {{ activeSegment('notices.create') }} ml-4">
+                            <a href="{{ route('rules.create') }}"
+                                class="nav-link {{ activeSegment('rules.create') }} ml-4">
                                 <i class="fa-solid fa-sliders text-dark"></i>
                                 <p class="active">নিয়মকানুন</p>
                             </a>

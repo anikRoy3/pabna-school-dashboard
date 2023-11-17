@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('school_name')->comment('required');
             $table->string('school_logo')->comment('required');
+            $table->string('address')->comment('required');
             $table->string('EIIN_no')->comment('required');
             $table->unsignedBigInteger('college_code')->comment('required');
             $table->unsignedBigInteger('school_code')->comment('required');

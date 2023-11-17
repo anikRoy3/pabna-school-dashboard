@@ -38,6 +38,7 @@
                     <tr style="color: black">
                         <th>স্কুলের নাম</th>
                         <th>স্কুলের লোগো </th>
+                        <th>ঠিকানা</th>
                         <th>EIIN নং:</th>
                         <th>কলেজ কোড</th>
                         <th>স্কুল কোড</th>
@@ -55,6 +56,7 @@
                                 <img width="100" height="100" class="slider-img"
                                     src="{{ Storage::url($data->school_logo) }}" alt="">
                             </td>
+                            <td>{{ $data->address }}</td>
                             <td>{{ $data->EIIN_no }}</td>
                             <td>{{ $data->college_code }}</td>
                             <td>{{ $data->school_code }}</td>

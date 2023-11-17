@@ -11,12 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('faqs', function (Blueprint $table) {
+        Schema::create('rules', function (Blueprint $table) {
             $table->id();
-            $table->integer('show_sl')->comment('optional');
-            $table->string('question')->comment('requried');
-            $table->text('answer')->comment('requried');
-            $table->tinyInteger('status')->default(true);
+            $table->text('description')->comment('required');
             $table->timestamps();
         });
     }
@@ -26,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('faqs');
+        Schema::dropIfExists('rules');
     }
 };

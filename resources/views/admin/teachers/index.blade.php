@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
-@section('title', 'আমাদের অর্জন সমূহের তালিকা')
-@section('content-header', 'আমাদের অর্জন সমূহের তালিকা ')
+@section('title', 'আমাদের শিক্ষকমন্ডলীর তালিকা')
+@section('content-header', 'আমাদের শিক্ষকমন্ডলীর তালিকা ')
 @section('content-actions')
     <a href="{{ route('teachers.create') }}" class="btn btn-success">তৈরি করুন</a>
 @endsection
@@ -61,7 +61,7 @@
                             <td>{{ $item->phone }}</td>
                             <td>{{ $item->section }}</td>
                             <td>
-                                <img width="200" height="100" class="slider-img" src="{{ Storage::url($item->image) }}"
+                                <img width="100" height="100" class="slider-img" src="{{ Storage::url($item->image) }}"
                                     alt="">
                             </td>
                             <td>{{ $item->lastDegree }}</td>

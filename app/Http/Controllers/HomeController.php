@@ -8,13 +8,14 @@ use App\Models\DirectorsCategory;
 use App\Models\Order;
 use App\Models\Customer;
 use App\Models\Directors;
+use App\Models\FAQ;
 use Illuminate\Http\Request;
 
 use App\Models\Slider;
 use App\Models\Notice;
 use App\Models\VerificationOfLandInformation;
 use App\Models\LandServiceAndSoftware;
-use App\Models\Faq;
+
 use App\Models\LandRelatedMediaLink;
 use App\Models\FestiableImage;
 use App\Models\LandRelatedVideoLink;
@@ -50,7 +51,7 @@ class HomeController extends Controller
         $co_curricular = CoCurricular::count();
         $verificationOfLandInformationCount = VerificationOfLandInformation::count();
         $appsAndSoftwaresCount = LandServiceAndSoftware::count();
-        $faqsCount = Faq::count();
+        $faqsCount = FAQ::count();
         $landRelatedMediaLinksCount = LandRelatedMediaLink::count();
         $festivalsImagesCount = FestiableImage::count(); // Add this line
         $landVideoLinksCount = LandRelatedVideoLink::count(); // Add this line

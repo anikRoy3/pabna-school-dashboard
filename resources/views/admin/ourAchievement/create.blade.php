@@ -29,7 +29,7 @@
                     <label for="image">ছবি <span class="text-danger"> * </span> <small class="text-success">(একের অধিক
                             ছবি আপলোড দিতে পারেন)</small></label>
                     <div class="custom-file">
-                        <input type="file" required class="custom-file-input" name="images[]" id="image" multiple>
+                        <input type="file" required class="custom-file-input" name="images[]" id="o_a_image" multiple>
                         <label class="custom-file-label" for="image" id="image-label">ছবি নির্বাচন করুন</label>
                     </div>
                     @error('images')
@@ -72,7 +72,7 @@
     </script>
 
     <script>
-        document.querySelector('#image').addEventListener('change', function(e) {
+        document.querySelector('#o_a_image').addEventListener('change', function(e) {
             const fileList = e.target.files;
             const imagePreview = document.querySelector('#image-preview');
             imagePreview.innerHTML = '';
@@ -85,23 +85,6 @@
                 image.style.marginRight = '10px'
                 imagePreview.appendChild(image);
             }
-        });
-    </script>
-
-    <script>
-        $(document).ready(function() {
-            const category = $("#category");
-            const long_description=$("#long_description")
-            $('#category').on('change', function() {
-                const selectedCategory = $(this).val();
-                console.log(selectedCategory)
-                if (selectedCategory === 'অনুষ্ঠান ও কর্মসূচি') {
-                    long_description.hide();
-                   
-                } else {
-                    long_description.show();
-                }
-            });
         });
     </script>
 @endsection

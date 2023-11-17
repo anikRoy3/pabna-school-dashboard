@@ -14,7 +14,29 @@ class TeachersController extends Controller
      */
     public function index()
     {
-        $data = Teachers::all();
+        $teachers = new Teachers();
+        $data = $teachers->all();
+
+        if (request()->wantsJson()) {
+            $data = $teachers->get();
+            if ($data) {
+                return response([
+                    'status' => true,
+                    'message' => 'Data Show Successfully',
+                    'code' => 200,
+                    'data' => $data,
+
+                ], 200);
+            } else {
+                return response([
+                    'status' => false,
+                    'message' => 'তথ্য পাওয়া যায়নি',
+                    'code' => 404,
+                    'data' => null,
+
+                ], 404);
+            }
+        }
         return view("admin.teachers.index", compact('data'));
     }
 

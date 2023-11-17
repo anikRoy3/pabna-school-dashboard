@@ -17,10 +17,10 @@ class   NoticeController extends Controller
     {
         $data = new Notice();
 
-        $data = $data->orderBy('show_sl', 'asc');
+        $data = $data->orderBy('id', 'desc');
 
         if ($request->search) {
-            $data = $data->where('show_sl', 'LIKE', "%{$request->search}%")
+            $data = $data->where('id', 'LIKE', "%{$request->search}%")
                 ->orWhere('link', 'LIKE', "%{$request->search}%");
         }
 

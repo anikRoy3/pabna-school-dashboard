@@ -3,9 +3,9 @@
 use App\Http\Controllers\AcademicController;
 use App\Http\Controllers\AdmissionController;
 use App\Http\Controllers\CoCurricularController;
+use App\Http\Controllers\RulesController;
 use App\Http\Controllers\SchoolActivitiesController;
-use App\Http\Controllers\SettingController;
-use Illuminate\Http\Request;
+use App\Http\Controllers\SettingsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\ManualController;
@@ -30,7 +30,8 @@ use App\Http\Controllers\VerificationOfLandInformationController;
 use App\Http\Controllers\UserAskQuestionController;
 use App\Http\Controllers\DirectorsCategoryController;
 use App\Http\Controllers\DirectorsController;
-use App\Models\DirectorsCategory;
+use App\Http\Controllers\OurAchievementController;
+use App\Http\Controllers\TeachersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -75,5 +76,8 @@ Route::resource('directors', DirectorsController::class);
 Route::resource('schoolActivities', SchoolActivitiesController::class);
 Route::resource('academic', AcademicController::class);
 Route::resource('coCurricular', CoCurricularController::class);
+Route::resource('ourAchievements', OurAchievementController::class);
 Route::resource('admission', AdmissionController::class);
-Route::resource('settings', SettingController::class);
+Route::resource('teachers', TeachersController::class);
+Route::resource('settings', SettingsController::class);
+Route::resource('rules', RulesController::class);

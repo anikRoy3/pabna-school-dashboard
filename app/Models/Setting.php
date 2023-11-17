@@ -8,6 +8,6 @@ class Setting extends Model
 {
     protected $table= 'settings';
     protected $fillable = [
-        'school_name', 'school_logo', 'emails', 'mobile_numbers', 'school_code', 'college_code', 'EIIN_no'
+        'school_name', 'school_logo', 'emails', 'mobile_numbers', 'school_code', 'college_code', 'EIIN_no', 'address'
     ];
 }

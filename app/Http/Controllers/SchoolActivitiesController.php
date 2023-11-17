@@ -52,14 +52,17 @@ class SchoolActivitiesController extends Controller
     {
         // Validate the request data
         $request->validate([
-            'title' => 'required|string',
+            'title' => 'required|string|max:255',
             'images' => 'nullable|array',
             'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:5120',
             'status' => 'boolean',
             'category' => 'required',
-            'long_description' => 'string',
+            'long_description' => 'required',
         ]);
-
+        
+        // dd($request->all());
+        // dd($request['title']);
+        
         // Create a new record in the database
         $activity = new SchoolActivities();
         $activity->title = $request->input('title');

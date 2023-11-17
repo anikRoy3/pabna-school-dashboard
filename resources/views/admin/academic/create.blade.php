@@ -36,7 +36,7 @@
                     <label for="pdf_file">পিডিএফ ফাইল <span class="text-danger"> * </span> <small class="text-danger">( নির্বাচিত
                             ফাইলের আকার 2MB এর নিচে হতে হবে )</small> </label>
                     <div class="custom-file">
-                        <input type="file" required accept=".pdf" class="custom-file-input" name="pdf_filee" id="pdf_file">
+                        <input type="file" required accept=".pdf" class="custom-file-input" name="pdf_file" id="pdf_file">
                         <label class="custom-file-label" for="pdf_file">পিডিএফ ফাইল নির্বাচন করুন</label>
                     </div>
                     @error('pdf_file')

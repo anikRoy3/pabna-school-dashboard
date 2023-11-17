@@ -33,6 +33,7 @@ use App\Http\Controllers\NagorikerSubidhaController;
 use App\Http\Controllers\ProkolperOutputController;
 use App\Http\Controllers\DirectorsController;
 use App\Http\Controllers\OurAchievementController;
+use App\Http\Controllers\RulesController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\TeachersController;
 use Illuminate\Support\Facades\Route;
@@ -103,5 +104,6 @@ Route::prefix('admin')/* ->middleware('auth') */->group(function () {
     Route::resource('ourAchievement', OurAchievementController::class);
     Route::resource('teachers', TeachersController::class);
     Route::resource('settings', SettingsController::class);
+    Route::resource('rules', RulesController::class);
 }); 
 
