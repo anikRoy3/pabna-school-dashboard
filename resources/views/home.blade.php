@@ -6,7 +6,7 @@
     @import url('https://fonts.maateen.me/kalpurush/font.css');
 
     .green-border {
-        border: 3px solid #9ccaa7;
+        border: 3px solid rgb(173, 208, 218);
         padding: 1rem;
     }
 
@@ -37,7 +37,7 @@
             <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 mt-2">
                 <div class="small-box green-border">
                     <div class="inner">
-                        <h3 class="text-center text-success">{{ bnNum($sliders) }}</h3>
+                        <h3 class="text-center text-info">{{ bnNum($sliders) }}</h3>
                         <p class="text-center">স্লাইডার</p>
                     </div>
                     <div class="icon mb-3">
@@ -45,7 +45,7 @@
                     </div>
                     <div class="text-center mt-3">
                         <a href="{{ route('sliders.index') }}" class="text-dark">এক্টিভ স্লাইডার দেখুন <br>
-                            <i class="fa-solid fa-arrow-right ml-3 text-success"></i>
+                            <i class="fa-solid fa-arrow-right ml-3 text-info"></i>
                         </a>
                     </div>
                 </div>
@@ -56,7 +56,7 @@
              <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mt-3">
                 <div class="small-box green-border">
                     <div class="inner">
-                        <h3 class="text-success text-center">{{ bnNum($noticesCount) }}</h3>
+                        <h3 class="text-info text-center">{{ bnNum($noticesCount) }}</h3>
                         <p class="text-center">নোটিশসমূহ</p>
                     </div>
                     <div class="icon">
@@ -64,7 +64,7 @@
                     </div>
 
                     <div class="text-center mt-3">
-                        <a href="{{ route('notices.index') }}" class="btn btn-success">
+                        <a href="{{ route('notices.index') }}" class="btn btn-info">
                             সকল নোটিশসমূহ
                             <i class="fa-solid fa-arrow-right ml-3"></i>
                         </a>
@@ -77,7 +77,7 @@
             <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 mt-2">
                 <div class="small-box green-border">
                     <div class="inner">
-                        <h3 class="text-center text-success"> {{ bnNum($directors) }}</h3>
+                        <h3 class="text-center text-info"> {{ bnNum($directors) }}</h3>
                         <p class="text-center">পরিচালনা পর্ষদ ও শিক্ষকমন্ডলী</p>
                     </div>
                     <div class="icon mb-3">
@@ -85,7 +85,7 @@
                     </div>
                     <div class="text-center mt-3">
                         <a href="{{ route('directors.index') }}" class="text-dark">এক্টিভ দেখুন <br>
-                            <i class="fa-solid fa-arrow-right ml-3 text-success"></i>
+                            <i class="fa-solid fa-arrow-right ml-3 text-info"></i>
                         </a>
                     </div>
                 </div>
@@ -96,7 +96,7 @@
             <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 mt-2">
                 <div class="small-box green-border">
                     <div class="inner">
-                        <h3 class="text-center text-success"> {{ bnNum($directors_categories) }}</h3>
+                        <h3 class="text-center text-info"> {{ bnNum($directors_categories) }}</h3>
                         <p class="text-center">পরিচালনা পর্ষদ ক্যাটাগরি</p>
                     </div>
                     <div class="icon mb-3">
@@ -104,7 +104,7 @@
                     </div>
                     <div class="text-center mt-3">
                         <a href="{{ route('directors_categories.index') }}" class="text-dark">এক্টিভ দেখুন <br>
-                            <i class="fa-solid fa-arrow-right ml-3 text-success"></i>
+                            <i class="fa-solid fa-arrow-right ml-3 text-info"></i>
                         </a>
                     </div>
                 </div>
@@ -115,7 +115,7 @@
             <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 mt-2">
                 <div class="small-box green-border">
                     <div class="inner">
-                        <h3 class="text-center text-success"> {{ bnNum($school_activities) }}</h3>
+                        <h3 class="text-center text-info"> {{ bnNum($school_activities) }}</h3>
                         <p class="text-center">স্কুল কার্যক্রম</p>
                     </div>
                     <div class="icon mb-3">
@@ -123,7 +123,7 @@
                     </div>
                     <div class="text-center mt-3">
                         <a href="{{ route('schoolActivities.index') }}" class="text-dark">এক্টিভ দেখুন <br>
-                            <i class="fa-solid fa-arrow-right ml-3 text-success"></i>
+                            <i class="fa-solid fa-arrow-right ml-3 text-info"></i>
                         </a>
                     </div>
                 </div>
@@ -134,7 +134,7 @@
             <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 mt-2">
                 <div class="small-box green-border">
                     <div class="inner">
-                        <h3 class="text-center text-success"> {{ bnNum($academic) }}</h3>
+                        <h3 class="text-center text-info"> {{ bnNum($academic) }}</h3>
                         <p class="text-center">একাডেমিক</p>
                     </div>
                     <div class="icon mb-3">
@@ -142,7 +142,7 @@
                     </div>
                     <div class="text-center mt-3">
                         <a href="{{ route('academic.index') }}" class="text-dark">এক্টিভ দেখুন <br>
-                            <i class="fa-solid fa-arrow-right ml-3 text-success"></i>
+                            <i class="fa-solid fa-arrow-right ml-3 text-info"></i>
                         </a>
                     </div>
                 </div>
@@ -154,7 +154,7 @@
             <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 mt-2">
                 <div class="small-box green-border">
                     <div class="inner">
-                        <h3 class="text-center text-success"> {{ bnNum($co_curricular) }}</h3>
+                        <h3 class="text-center text-info"> {{ bnNum($co_curricular) }}</h3>
                         <p class="text-center">সহ-পাঠক্রম</p>
                     </div>
                     <div class="icon mb-3">
@@ -162,18 +162,18 @@
                     </div>
                     <div class="text-center mt-3">
                         <a href="{{ route('coCurricular.index') }}" class="text-dark">এক্টিভ দেখুন <br>
-                            <i class="fa-solid fa-arrow-right ml-3 text-success"></i>
+                            <i class="fa-solid fa-arrow-right ml-3 text-info"></i>
                         </a>
                     </div>
                 </div>
             </div>
 
-            <!------- App & Software Information ------->
+          {{--   <!------- App & Software Information ------->
 
             <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 mt-2">
                 <div class="small-box green-border">
                     <div class="inner">
-                        <h3 class="text-center text-success">{{ bnNum($appsAndSoftwaresCount) }}</h3>
+                        <h3 class="text-center text-info">{{ bnNum($appsAndSoftwaresCount) }}</h3>
                         <p class="text-center">জমির তথ্য ও সফটওয়্যার</p>
                     </div>
                     <div class="icon mb-3">
@@ -359,7 +359,7 @@
             </div>
             <!-------End of প্রকল্প সম্পর্কিত Information ------->
 
-        </div>
+        </div> --}}
     </div>
 @endsection
 

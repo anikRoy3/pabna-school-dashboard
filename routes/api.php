@@ -8,26 +8,10 @@ use App\Http\Controllers\SchoolActivitiesController;
 use App\Http\Controllers\SettingsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FaqController;
-use App\Http\Controllers\ManualController;
+
 use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\SliderController;
-use App\Http\Controllers\ServiceController;
-use App\Http\Controllers\MenuListController;
-use App\Http\Controllers\NitimalaController;
-use App\Http\Controllers\AyinbidhiController;
-use App\Http\Controllers\RecentUpdateController;
-use App\Http\Controllers\FestiableImageController;
-use App\Http\Controllers\UddesshoLokkhoController;
-use App\Http\Controllers\VhumiShebaFormController;
-use App\Http\Controllers\ProkolperOutputController;
-use App\Http\Controllers\NagorikerSubidhaController;
-use App\Http\Controllers\PoripotroProggaponController;
-use App\Http\Controllers\ProkolpoSarsongkhepController;
-use App\Http\Controllers\LandRelatedMediaLinkController;
-use App\Http\Controllers\LandRelatedVideoLinkController;
-use App\Http\Controllers\LandServiceAndSoftwareController;
-use App\Http\Controllers\VerificationOfLandInformationController;
-use App\Http\Controllers\UserAskQuestionController;
+
 use App\Http\Controllers\DirectorsCategoryController;
 use App\Http\Controllers\DirectorsController;
 use App\Http\Controllers\OurAchievementController;
